@@ -35,11 +35,7 @@
                 </p>
             </div>
 
-            <!--
-              Painel exibido quando o usuário JÁ está autenticado.
-              Como a atividade não exige uma página extra, o pós-login
-              é demonstrado aqui, com o botão de logout.
-            -->
+            <!-- Painel exibido quando o usuário já está autenticado. -->
             <div class="logged-panel" th:if="${username != null}">
                 <h4 class="login-title">Olá, <span th:text="${username}">usuário</span>!</h4>
                 <p>Você está autenticado na aplicação.</p>
@@ -57,7 +53,7 @@
                   th:if="${username == null}">
                 <h4 class="login-title">Login</h4>
 
-                <!-- Aceita username OU e-mail -->
+                <!-- Aceita username ou e-mail -->
                 <input type="text" id="username" name="username"
                        placeholder="Usuário ou e-mail" required autofocus>
 

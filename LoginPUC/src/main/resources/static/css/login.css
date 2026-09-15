@@ -1,6 +1,3 @@
-/* ==========================================================
-   LoginPUC - folha de estilos das telas de login e recuperação
-   ========================================================== */
 
 * {
     margin: 0;
@@ -202,9 +199,7 @@ body {
     margin-bottom: 0.4rem;
 }
 
-/* ==========================================================
-   Responsividade: telas pequenas exibem só o formulário
-   ========================================================== */
+/*Responsividade: telas pequenas exibem só o formulário*/
 @media (max-width: 768px) {
     .login-container {
         height: auto;
