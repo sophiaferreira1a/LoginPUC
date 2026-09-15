@@ -18,18 +18,18 @@ body {
     background-color: #2c5a8c;
 }
 
-/* ---------- Cartão principal ---------- */
+/* Cartão principal */
 .register-container {
     display: flex;
     width: min(900px, 95vw);
-    height: min(640px, 92vh);            /* altura fixa igual ao login (um pouco maior p/ caber os campos) */
+    height: min(640px, 92vh);            
     background-color: #fcfeff;
     border-radius: 16px;
     box-shadow: 0 20px 50px rgba(10, 30, 50, 0.35);
     overflow: hidden;
 }
 
-/* ---------- Coluna da imagem (mesmo comportamento do login) ---------- */
+/* Coluna da imagem (mesmo comportamento do login) */
 .register-image-logo-container {
     width: 50%;
     flex-shrink: 0;
@@ -39,11 +39,11 @@ body {
 .register-image-logo-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover;      /* imagem preenche a coluna inteira, igual ao login */
+    object-fit: cover;     
     display: block;
 }
 
-/* ---------- Coluna do formulário ---------- */
+/* Coluna do formulário */
 .register-form {
     flex: 1;
     display: flex;
@@ -63,7 +63,7 @@ body {
     letter-spacing: 1px;
 }
 
-/* ---------- Labels e inputs ---------- */
+/* Labels e inputs */
 .register-form label {
     display: block;
     font-size: 0.8rem;
@@ -96,7 +96,7 @@ body {
     margin-top: 0.25rem;
 }
 
-/* ---------- Botão ---------- */
+/* Botão */
 .register-button-container {
     width: 100%;
     margin-top: 1.3rem;
@@ -105,7 +105,7 @@ body {
 .register-button-container button {
     width: 100%;
     padding: 0.8rem;
-    background-color: #2c5a8c;      /* cor sólida */
+    background-color: #2c5a8c;    
     color: #fff;
     font-size: 1rem;
     font-weight: 700;
@@ -120,7 +120,7 @@ body {
     box-shadow: 0 6px 16px rgba(44, 90, 140, 0.4);
 }
 
-/* ---------- Link de retorno ao login ---------- */
+/* Link de retorno ao login */
 .register-redirect-options {
     text-align: center;
     color: #5f6b75;
@@ -133,7 +133,7 @@ body {
     font-weight: 700;
 }
 
-/* ---------- Mensagens ---------- */
+/* Mensagens */
 .message {
     padding: 0.7rem 0.9rem;
     margin-bottom: 0.8rem;
@@ -161,7 +161,7 @@ body {
     border: 1px solid #abebc6;
 }
 
-/* ---------- Responsividade ---------- */
+/* Responsividade */
 @media (max-width: 768px) {
     .register-container {
         max-width: 100%;
