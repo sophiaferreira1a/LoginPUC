@@ -1,113 +1,177 @@
+/* ==========================================================
+   LoginPUC - folha de estilos da tela de cadastro
+   (mesma identidade visual da tela de login)
+   ========================================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body, html {
+html, body {
     height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                 Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Fundo com gradiente igual ao da tela de login */
+body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #F4F7FA;
+    padding: 1rem;
+    background: linear-gradient(135deg, #2c5a8c 0%, #81b1c3 55%, #d7e7f1 100%);
 }
 
+/* Cartão principal do cadastro */
 .register-container {
     display: flex;
-    width: 60vw;
+    width: min(900px, 95vw);
     height: auto;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    max-height: 95vh;
+    background-color: #fcfeff;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(10, 30, 50, 0.35);
     overflow: hidden;
-    background-color: #FCFEFF;
 }
 
+/* Coluna lateral com o logo */
 .register-image-logo-container {
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
-    border-radius: 10px 0 0 10px;
-    padding: 0;
-    background-color: #EAF4F8;
+    padding: 2rem;
+    background: linear-gradient(160deg, #eaf4f8, #d7e7f1);
 }
 
 .register-image-logo-container img {
-    max-width: 80%;
+    max-width: 100%;
     height: auto;
     object-fit: contain;
-    align-self: center;
-    border-radius: 0;
 }
 
+/* Coluna do formulário */
 .register-form {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    width: 80%;
-    padding: 2rem;
-    border-radius: 0 10px 10px 0;
+    padding: 2.2rem 2.5rem;
+    overflow-y: auto;
 }
 
 .register-title {
-    color: gray;
+    color: #2c5a8c;
     text-align: center;
-    font-weight: bolder;
+    font-size: 1.6rem;
+    font-weight: 800;
     margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ---------- Labels e inputs ---------- */
+.register-form label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #5f6b75;
+    margin-top: 0.85rem;
 }
 
 .register-form input {
     width: 100%;
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
+    padding: 0.65rem 0.85rem;
+    margin-top: 0.3rem;
+    border: 1.5px solid #cbd8e1;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+.register-form input:focus {
+    outline: none;
+    border-color: #2c5a8c;
+    box-shadow: 0 0 0 3px rgba(44, 90, 140, 0.15);
+}
+
+/* Erro de validação por campo (Bean Validation) */
+.field-error {
+    color: #c0392b;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 0.25rem;
+}
+
+/* ---------- Botão ---------- */
 .register-button-container {
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 1.3rem;
 }
 
 .register-button-container button {
     width: 100%;
-    padding: 0.5rem;
-    background-color: #81B1C3;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 0;          /* botão quadrado */
+    padding: 0.8rem;
+    background: linear-gradient(90deg, #2c5a8c, #81b1c3);
+    color: #fff;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s;
 }
 
 .register-button-container button:hover {
-    background-color: #5a8fa2;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(44, 90, 140, 0.4);
 }
 
+/* ---------- Link de retorno ao login ---------- */
 .register-redirect-options {
     text-align: center;
-    color: gray;
+    color: #5f6b75;
     padding-top: 1rem;
-    font-weight: bolder;
-    font-size: small;
+    font-size: 0.85rem;
 }
 
 .register-redirect-options a {
-    color: #81B1C3;
-    font-weight: bold;
+    color: #2c5a8c;
+    font-weight: 700;
 }
 
-.register-redirect-options a:first-child {
-    margin-left: 5px;
+/* ---------- Mensagens ---------- */
+.message {
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.9rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-align: center;
 }
 
-.register-redirect-options a:last-child {
-    color: #FF743C;
-    margin-left: 5px;
+.message-error {
+    background-color: #fdecea;
+    color: #c0392b;
+    border: 1px solid #f5b7b1;
+}
+
+/* ==========================================================
+   Responsividade
+   ========================================================== */
+@media (max-width: 768px) {
+    .register-container {
+        max-width: 100%;
+    }
+
+    /* Esconde a coluna do logo em telas estreitas */
+    .register-image-logo-container {
+        display: none;
+    }
+
+    .register-form {
+        padding: 1.8rem 1.2rem;
+    }
 }

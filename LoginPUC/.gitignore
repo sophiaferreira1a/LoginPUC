@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Runtime ###
+app-run.log
+app-run.err.log
+app.pid

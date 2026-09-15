@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro | LoginPUC</title>
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+</head>
+<body>
+    <div class="register-container">
+        <!-- Coluna lateral com a imagem/logo -->
+        <div class="register-image-logo-container">
+            <img th:src="@{/images/apc-login-bg.png}" alt="Logo da PUC Minas">
+        </div>
+
+        <!-- Coluna do formulário de cadastro -->
+        <div class="register-form">
+            <!-- Erro de negócio (duplicidade, senhas divergentes) vindo do service -->
+            <p class="message message-error" th:if="${registrationError}">
+                <span th:text="${registrationError}">Erro no cadastro</span>
+            </p>
+
+            <!-- Formulário ligado ao DTO UserRegistrationDTO via th:object -->
+            <form th:action="@{/register}" method="post" th:object="${registrationForm}">
+                <h4 class="register-title">Registre-se</h4>
+
+                <!-- Nome completo -->
+                <label for="name">Nome completo</label>
+                <input type="text" id="name" th:field="*{name}" placeholder="Seu nome"
+                       required>
+                <p class="field-error" th:if="${#fields.hasErrors('name')}"
+                   th:errors="*{name}"></p>
+
+                <!-- Nome de usuário -->
+                <label for="username">Nome de usuário</label>
+                <input type="text" id="username" th:field="*{username}"
+                       placeholder="Escolha um nome de usuário" required>
+                <p class="field-error" th:if="${#fields.hasErrors('username')}"
+                   th:errors="*{username}"></p>
+
+                <!-- E-mail -->
+                <label for="email">E-mail</label>
+                <input type="email" id="email" th:field="*{email}"
+                       placeholder="voce@exemplo.com" required>
+                <p class="field-error" th:if="${#fields.hasErrors('email')}"
+                   th:errors="*{email}"></p>
+
+                <!-- Senha -->
+                <label for="password">Senha</label>
+                <input type="password" id="password" th:field="*{password}"
+                       placeholder="Mínimo de 6 caracteres" required>
+                <p class="field-error" th:if="${#fields.hasErrors('password')}"
+                   th:errors="*{password}"></p>
+
+                <!-- Confirmação da senha -->
+                <label for="confirmPassword">Confirme a senha</label>
+                <input type="password" id="confirmPassword" th:field="*{confirmPassword}"
+                       placeholder="Digite a senha novamente" required>
+                <p class="field-error" th:if="${#fields.hasErrors('confirmPassword')}"
+                   th:errors="*{confirmPassword}"></p>
+
+                <div class="register-button-container">
+                    <button type="submit">Criar conta</button>
+                </div>
+
+                <p class="register-redirect-options">
+                    Já tem uma conta? <a th:href="@{/login}">Faça login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

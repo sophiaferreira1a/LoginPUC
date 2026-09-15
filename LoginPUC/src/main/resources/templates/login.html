@@ -1,31 +1,79 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Login | LoginPUC</title>
     <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
 <body>
     <div class="login-container">
+        <!-- Coluna lateral com a imagem/logo -->
         <div class="login-image-logo-container">
-            <img th:src="@{/images/apc-login-bg.png}" alt="Logo da PUC Minas">
+            <img th:src="@{/images/bg-puc.jpeg}" alt="Logo da PUC Minas">
         </div>
-    <div class="login-form">
-        <form th:action="@{/login}" method="post" class="login-form">
-            <h4 class="login-title">Login</h4>
-            <input type="text" id="username" name="username" placeholder="Username" required>
-            <input type="password" id="password" name="password" placeholder="Senha" required>
-            <div class="login-button-container">
-                <button type="submit">Entrar</button>
+
+        <!-- Coluna do formulário -->
+        <div class="login-form">
+            <!-- Mensagens de retorno da aplicação (erro, logout, cadastro...) -->
+            <div class="messages">
+                <!-- Credenciais inválidas -->
+                <p class="message message-error" th:if="${param.error}">
+                    Usuário ou senha inválidos. Verifique suas credenciais.
+                </p>
+                <!-- Logout realizado -->
+                <p class="message message-info" th:if="${param.logout}">
+                    Você saiu da sua conta com sucesso.
+                </p>
+                <!-- Cadastro concluído (flash attribute do RegisterController) -->
+                <p class="message message-success" th:if="${registered}">
+                    Cadastro realizado com sucesso! Faça login para continuar.
+                </p>
+                <!-- Login bem-sucedido -->
+                <p class="message message-success" th:if="${param.success}">
+                    Login efetuado com sucesso!
+                </p>
             </div>
-            <p class="login-redirect-options">
-                Ainda não tem cadastro? <br>
-                <a href="/register">Cadastre-se</a>
-                <a href="/recoverpassword">Esqueceu sua senha?</a>
-            </p>
-        </form>
-    </div>
+
+            <!--
+              Painel exibido quando o usuário JÁ está autenticado.
+              Como a atividade não exige uma página extra, o pós-login
+              é demonstrado aqui, com o botão de logout.
+            -->
+            <div class="logged-panel" th:if="${username != null}">
+                <h4 class="login-title">Olá, <span th:text="${username}">usuário</span>!</h4>
+                <p>Você está autenticado na aplicação.</p>
+                <!-- Logout: formulário POST (o token CSRF é inserido automaticamente pelo Thymeleaf) -->
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="btn-logout">Sair da conta</button>
+                </form>
+                <p class="login-redirect-options">
+                    <a th:href="@{/recoverpassword}">Alterar senha</a>
+                </p>
+            </div>
+
+            <!-- Formulário de login (POST processado pelo Spring Security) -->
+            <form th:action="@{/login}" method="post" class="login-form-box"
+                  th:if="${username == null}">
+                <h4 class="login-title">Login</h4>
+
+                <!-- Aceita username OU e-mail -->
+                <input type="text" id="username" name="username"
+                       placeholder="Usuário ou e-mail" required autofocus>
+
+                <input type="password" id="password" name="password"
+                       placeholder="Senha" required>
+
+                <div class="login-button-container">
+                    <button type="submit">Entrar</button>
+                </div>
+
+                <p class="login-redirect-options">
+                    Ainda não tem cadastro? <a th:href="@{/register}">Cadastre-se</a><br>
+                    <a th:href="@{/recoverpassword}">Esqueceu sua senha?</a>
+                </p>
+            </form>
+        </div>
     </div>
 </body>
 </html>

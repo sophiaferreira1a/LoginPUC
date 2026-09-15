@@ -1,0 +1,7 @@
+# Editor settings
+.vscode/
+
+# Runtime logs / temp artifacts created during local execution
+*.log
+*.pid
+*.html~
